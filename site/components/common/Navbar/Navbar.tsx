@@ -177,22 +177,27 @@ const Navbar: FC<NavbarProps> = ({ links }) => {
                               >
                                 {section.name}
                               </p>
-                              <ul
-                                role="list"
-                                aria-labelledby={`${category.id}-${section.id}-heading-mobile`}
-                                className="mt-6 flex flex-col space-y-6"
-                              >
-                                {section.items.map((item) => (
-                                  <li key={item.name} className="flow-root">
-                                    <a
-                                      href={item.href}
-                                      className="-m-2 p-2 block text-gray-500"
-                                    >
-                                      {item.name}
-                                    </a>
-                                  </li>
-                                ))}
-                              </ul>
+
+                              {section.items && (
+                                <>
+                                  <ul
+                                    role="list"
+                                    aria-labelledby={`${category.id}-${section.id}-heading-mobile`}
+                                    className="mt-6 flex flex-col space-y-6"
+                                  >
+                                    {section.items.map((item) => (
+                                      <li key={item.name} className="flow-root">
+                                        <a
+                                          href={item.href}
+                                          className="-m-2 p-2 block text-gray-500"
+                                        >
+                                          {item.name}
+                                        </a>
+                                      </li>
+                                    ))}
+                                  </ul>
+                                </>
+                              )}
                             </div>
                           ))}
                         </Tab.Panel>
