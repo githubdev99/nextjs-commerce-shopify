@@ -17,6 +17,7 @@ import { MenuSidebarView } from '@components/common/UserNav'
 import type { Page } from '@commerce/types/page'
 import type { Category } from '@commerce/types/site'
 import type { Link as LinkProps } from '../UserNav/MenuSidebarView'
+import Link from 'next/link'
 
 const Loading = () => (
   <div className="w-80 h-80 flex items-center text-center justify-center p-3">
@@ -102,21 +103,56 @@ const SidebarUI: React.FC<{ links: LinkProps[] }> = ({ links }) => {
   ) : null
 }
 
+const HeroSection: React.FC = () => (
+  <div className="mx-auto flex justify-center">
+    <div className="text-center max-w-screen-sm">
+      <h1 className="text-4xl tracking-tight font-extrabold text-white sm:text-5xl md:text-6xl mt-[30vh]">
+        <span className="block xl:inline">New arrivals are here</span>
+      </h1>
+      <p className="mt-3 text-lg text-white mx-auto">
+        The new arrivals have, well, newly arrived. Check out the latest options
+        from our summer small-batch release while they’re still in stock
+      </p>
+      <div className="mt-5 flex justify-center">
+        <div className="rounded-md shadow">
+          <Link href="/search">
+            <a className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-slate-900 bg-slate-100 hover:bg-slate-200 md:py-4 md:text-lg md:px-10">
+              Shop Now
+            </a>
+          </Link>
+        </div>
+      </div>
+    </div>
+  </div>
+)
+
 const Layout: React.FC<Props> = ({
   children,
   pageProps: { categories = [], ...pageProps },
 }) => {
   const { acceptedCookies, onAcceptCookies } = useAcceptCookies()
-  const { locale = 'en-US' } = useRouter()
-  const navBarlinks = categories.slice(0, 2).map((c) => ({
+  const { locale = 'en-US', pathname } = useRouter()
+  const navBarlinks = categories.slice(0, 10).map((c) => ({
     label: c.name,
     href: `/search/${c.slug}`,
   }))
 
+  const HeaderSection = (
+    <>
+      <Navbar links={navBarlinks} />
+      <div
+        className={pathname === '/' ? 'h-[100vh] bg-no-repeat bg-cover' : ''}
+        style={{ backgroundImage: 'url("./assets/bg-hero.jpeg")' }}
+      >
+        {pathname === '/' && <HeroSection />}
+      </div>
+    </>
+  )
+
   return (
     <CommerceProvider locale={locale}>
       <div className={cn(s.root)}>
-        <Navbar links={navBarlinks} />
+        {pathname === '/' ? HeaderSection : <Navbar links={navBarlinks} />}
         <main className="fit">{children}</main>
         <Footer pages={pageProps.pages} />
         <ModalUI />
