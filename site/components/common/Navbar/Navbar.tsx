@@ -328,25 +328,29 @@ const Navbar: FC<NavbarProps> = ({ links }) => {
                                           >
                                             {section.name}
                                           </p>
-                                          <ul
-                                            role="list"
-                                            aria-labelledby={`${section.name}-heading`}
-                                            className="mt-6 space-y-6 sm:mt-4 sm:space-y-4"
-                                          >
-                                            {section.items.map((item) => (
-                                              <li
-                                                key={item.name}
-                                                className="flex"
+                                          {section.items && (
+                                            <>
+                                              <ul
+                                                role="list"
+                                                aria-labelledby={`${section.name}-heading`}
+                                                className="mt-6 space-y-6 sm:mt-4 sm:space-y-4"
                                               >
-                                                <a
-                                                  href={item.href}
-                                                  className="hover:text-gray-800"
-                                                >
-                                                  {item.name}
-                                                </a>
-                                              </li>
-                                            ))}
-                                          </ul>
+                                                {section.items.map((item) => (
+                                                  <li
+                                                    key={item.name}
+                                                    className="flex"
+                                                  >
+                                                    <a
+                                                      href={item.href}
+                                                      className="hover:text-gray-800"
+                                                    >
+                                                      {item.name}
+                                                    </a>
+                                                  </li>
+                                                ))}
+                                              </ul>
+                                            </>
+                                          )}
                                         </div>
                                       ))}
                                     </div>
