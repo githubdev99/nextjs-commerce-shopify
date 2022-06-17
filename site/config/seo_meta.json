@@ -1,9 +1,9 @@
 {
-  "title": "Dev Learn One",
-  "titleTemplate": "%s - Dev Learn One",
+  "title": "Dev Learn One | Next.js Commerce",
+  "titleTemplate": "%s - Dev Learn One | Next.js Commerce",
   "description": "Next.js Commerce - https://www.nextjs.org/commerce",
   "openGraph": {
-    "title": "Dev Learn One",
+    "title": "Dev Learn One | Next.js Commerce",
     "description": "Next.js Commerce - https://www.nextjs.org/commerce",
     "type": "website",
     "url": "https://nextjs.org/commerce",
