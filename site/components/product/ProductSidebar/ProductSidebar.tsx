@@ -17,7 +17,11 @@ interface ProductSidebarProps {
 
 const ProductSidebar: FC<ProductSidebarProps> = ({ product, className }) => {
   const addItem = useAddItem()
+<<<<<<< HEAD
   const { openSidebar, setSidebarView } = useUI()
+=======
+  const { openSidebar } = useUI()
+>>>>>>> 9a39dbf (Initial commit)
   const [loading, setLoading] = useState(false)
   const [selectedOptions, setSelectedOptions] = useState<SelectedOptions>({})
 
@@ -33,7 +37,10 @@ const ProductSidebar: FC<ProductSidebarProps> = ({ product, className }) => {
         productId: String(product.id),
         variantId: String(variant ? variant.id : product.variants[0]?.id),
       })
+<<<<<<< HEAD
       setSidebarView('CART_VIEW')
+=======
+>>>>>>> 9a39dbf (Initial commit)
       openSidebar()
       setLoading(false)
     } catch (err) {

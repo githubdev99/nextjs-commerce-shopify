@@ -46,7 +46,11 @@ const UserNav: React.FC<{
               variant="naked"
               onClick={() => {
                 setSidebarView('CART_VIEW')
+<<<<<<< HEAD
                 openSidebar()
+=======
+                toggleSidebar()
+>>>>>>> 9a39dbf (Initial commit)
               }}
               aria-label={`Cart items: ${itemsCount}`}
             >
@@ -88,8 +92,13 @@ const UserNav: React.FC<{
             aria-label="Menu"
             variant="naked"
             onClick={() => {
+<<<<<<< HEAD
               setSidebarView('MOBILEMENU_VIEW')
               openSidebar()
+=======
+              openSidebar()
+              setSidebarView('MOBILE_MENU_VIEW')
+>>>>>>> 9a39dbf (Initial commit)
             }}
           >
             <Menu />
